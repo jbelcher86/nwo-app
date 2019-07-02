@@ -9,7 +9,8 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 Dummy_User = User(name='Johnny Tejas', email='theJT@hotmail.biz',
-picture='https://pbs.twimg.com/profile_images/700135459842826240/amPq1IHP_400x400.jpg')
+                  picture='https://pbs.twimg.com/profile_images/7001\
+                  35459842826240/amPq1IHP_400x400.jpg')
 
 session.add(Dummy_User)
 session.commit()
@@ -27,7 +28,7 @@ session.add(faction3)
 session.commit()
 
 wrestler1 = Wrestler(name='Hulk Hogan', user_id=1, finisher='Atomic Leg Drop',
-                        description='If you needed to name one wrestler, you \
+                     description='If you needed to name one wrestler, you \
                             probably named Hulk Hogan', faction=faction1)
 session.add(wrestler1)
 session.commit()
