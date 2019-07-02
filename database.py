@@ -1,21 +1,25 @@
+#!/usr/bin/env python2.7
+
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 
+
 Base = declarative_base()
+
 
 class User(Base):
     __tablename__ = 'user'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String(250), nullable =False)
+    name = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
     picture = Column(String(250))
 
+
 class Faction(Base):
     __tablename__ = 'faction'
-    
     id = Column(Integer, primary_key=True)
     name = Column(String(50), nullable=False)
     user_id = Column(Integer, ForeignKey('user.id'))
@@ -29,11 +33,12 @@ class Faction(Base):
             'name': self.name,
         }
 
+
 class Wrestler(Base):
     __tablename__ = 'wrestler'
 
-    id = Column(Integer, primary_key = True)
-    name = Column(String(100), nullable = False)
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100), nullable=False)
     finisher = Column(String(50))
     description = Column(String(250))
     faction_id = Column(Integer, ForeignKey('faction.id'))
@@ -43,14 +48,15 @@ class Wrestler(Base):
 
     @property
     def serialize(self):
-	    '''Return object data in easily serializeable format'''
-	    return {
-	        'faction': self.faction.name,
+        '''Return object data in easily serializeable format'''
+        return {
+            'faction': self.faction.name,
             'finisher': self.finisher,
-	        'description': self.description,
-	        'name': self.name,
+            'description': self.description,
+            'name': self.name,
             'id': self.id
-	    }
+              }
+
 
 engine = create_engine('sqlite:///nwo.db')
 Base.metadata.create_all(engine)
