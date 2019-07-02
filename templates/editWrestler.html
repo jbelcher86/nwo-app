@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="user-content">
+          {% if login_session['username'] != null %}
+            <span class="image"><img src="{{ login_session['picture'] }}"
+                                    height="42" width="42"  class="img-circle"></span><span
+              class="name">{{ login_session['username'] }}</span>
+            <a href="{{ url_for('gdisconnect') }}"><span
+                class="session">logout</span></a>
+          {% else %}
+            <a href="{{ url_for('showLogin') }}"><span
+                class="session">login</span></a>
+          {% endif %}
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6 text-center">
+        <h1> Edit Wrestler</h1>
+
+        <form action=" " method='post'>
+
+
+          <p>Name:</p>
+          <input type='text' size='30' name='name'
+                 placeholder='{{ wrestler.name }}'>
+          <p>Description:</p>
+          <input type='text' size='30' name='description'
+                 placeholder='{{ wrestler.description }}'>
+          <p>Finisher:</p>
+          <input type='text' size='30' name='finisher'
+                 placeholder='{{ wrestler.finisher }}'>
+            <br><br>
+            <input type='submit' value='Edit'>
+
+        </form>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+{% endblock %}

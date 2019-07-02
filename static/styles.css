@@ -1,0 +1,68 @@
+    
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f5f5ec;
+    color: rgb(182, 16, 16)
+}
+
+hr {
+    background-color: rgba(72, 72, 72, 0.8);
+    margin: auto;
+    width: 50%;
+}
+
+h1 {
+    text-align: center;
+    width: 100%;
+    font-size: 5.2em;
+}
+
+
+.image {
+    height="42"; width="42";
+}
+
+.card {
+    border: 1px solid #bbb; /* Dotted border */
+    border-radius: 4px; /* Rounded border */
+    margin: auto; /* Center the coupon */
+    max-width: 500px;
+    padding: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 4px #bbb;
+}
+
+a {
+    text-decoration: none;
+    color: rgba(72, 72, 72, 1);
+    font-size: 14px;
+}
+
+.right{
+    float: right;
+}
+
+.name {
+    width: 50%;
+    display: inline-block;
+    float: left;
+}
+.rank {
+    text-align: right;
+    width: 50%;
+    float: right;
+}
+
+.editdeletepane {
+}
+
+.flash {
+    background: #cee5F5;
+}
+
+.user-content {
+    width: 100%;
+    height: 50%;
+    display: block;
+    text-align: right;
+}

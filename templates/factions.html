@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="user-content">
+          {% if login_session['username'] != null %}
+            <span class="image"><img src="{{ login_session['picture'] }}"
+                                     height="42" width="42" class="img-circle"></span><span
+              class="name">{{ login_session['username'] }}</span>
+            <a href="{{ url_for('gdisconnect') }}"><span
+                class="session">logout</span></a>
+                {% else %}
+                <a href="{{ url_for('showLogin') }}"><span
+                    class="session">login</span></a>
+          {% endif %}
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>nWo Factions</h1>
+        <hr>
+      </div>
+      <div class="col-md-12">
+        <a href="{{ url_for('newFaction') }}"><h4> Add a New Faction </h4></a>
+
+        {% for faction in factions %}
+
+
+          <div class="card">
+            <a href="{{ url_for('showFactionDetail', faction_id = faction.id) }}">
+              <h3>{{ faction.name }}</h3></a>
+              {% if 'username' in login_session %}
+                      {% if login_session['user_id'] == faction.user_id %}
+            <span><a href="{{ url_for('editFaction',faction_id = faction.id) }}">Edit
+            nWo Factions</a></span>
+
+            <span class="right"><a
+                href="{{ url_for('deleteFaction',faction_id = faction.id) }}">Delete
+            nWo Factions</a></span>
+              {% endif %}
+                    {% endif %}
+          </div>
+
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

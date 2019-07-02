@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6 text-center">
+        <h1>New Wrestler</h1>
+
+        <form action=" " method='post'>
+          <p>Name:</p>
+          <input type='text' size='30' name='name'>
+          <p>Description:</p>
+          <input type='text' size='30' name='description'>
+          <p>Finisher:</p>
+          <input type='text' size='30' name='finisher'>
+          <br>
+          <input type='submit' value='Create'>
+
+        </form>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="user-content">
+          {% if login_session['username'] != null %}
+            <span class="image"><img src="{{ login_session['picture'] }}"
+                                  height="42" width="42"    class="img-circle"></span><span
+              class="name">{{ login_session['username'] }}</span>
+            <a href="{{ url_for('gdisconnect') }}"><span
+                class="session">logout</span></a>
+          {% else %}
+            <a href="{{ url_for('showLogin') }}"><span
+                class="session">login</span></a>
+          {% endif %}
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class='heading'>
+          <h1>{{ faction.name }}</h1>
+          <hr>
+        </div>
+
+        {% if wrestlers !=[] %}
+
+          <a href="{{ url_for('newWrestler', faction_id = faction.id ) }}">Add a
+            new
+            Wrestler</a>
+          </br></br>
+
+          <h2 class="text-center">Wrestlers</h2>
+          <hr>
+          <br>
+          <br>
+
+          {% for wrestler in wrestlers %}
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="card">
+                  <div class="card-title">
+                    <h2 class="text-center">{{ wrestler.name }}</h2>
+                    <hr>
+                  </div>
+
+                  <p>{{ wrestler.finisher }}</p>
+
+                  <p>{{ wrestler.description }}</p>
+                  <div class="card-action">
+                      {% if 'username' in login_session %}
+                      {% if login_session['user_id'] == wrestler.user_id %}
+                        <a href="{{ url_for('editWrestler', faction_id = faction.id, wrestler_id=wrestler.id) }}">Edit</a>
+                        <span class="right"> <a
+                            href="{{ url_for('deleteWrestler', faction_id = faction.id, wrestler_id=wrestler.id) }}">Delete</a>
+                    </span>
+                      {% endif %}
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p> You currently have no wrestlers. </p>
+          <a href="{{ url_for('newWrestler', faction_id = faction.id ) }}">Create
+            New
+            Wrestler</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

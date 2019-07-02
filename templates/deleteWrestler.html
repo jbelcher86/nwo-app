@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6 text-center">
+        <h2> Are you sure you want to delete {{ wrestler.name }}? </h2>
+
+        <form action="#" method='post'>
+
+          <input type='submit' , value='Delete'>
+
+
+        </form>
+        <br>
+        <a href=' '> Cancel </a>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+{% endblock %}
