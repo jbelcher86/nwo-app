@@ -176,6 +176,7 @@ def logout():
 
     return redirect(url_for('showFaction'))
 
+
 # Log user out of google sign in
 @app.route('/gdisconnect')
 def gdisconnect():
@@ -203,6 +204,7 @@ def gdisconnect():
     response.headers['Content-Type'] = 'application/json'
     return response
 
+
 # App Route function for the homepage
 @app.route('/')
 @app.route('/factions')
@@ -211,6 +213,7 @@ def showFactions():
     factions = session.query(Faction).all()
     return render_template('factions.html',
                            factions=factions, login_session=login_session)
+
 
 # App rout funtion for showing faction info
 @app.route('/factions/<int:faction_id>/')
@@ -221,6 +224,7 @@ def showFactionDetail(faction_id):
     return render_template('wrestler.html', wrestlers=wrestlers,
                            faction=faction,
                            login_session=login_session)
+
 
 # Create new factions
 @app.route('/factions/new/', methods=['GET', 'POST'])
@@ -235,6 +239,7 @@ def newFaction():
         return redirect(url_for('showFactions'))
     else:
         return render_template('newFaction.html', login_session=login_session)
+
 
 # Edit factions
 @app.route('/factions/<int:faction_id>/edit/', methods=['GET', 'POST'])
@@ -279,6 +284,7 @@ def deleteFaction(faction_id):
             'deleteFaction.html', faction=factionToDelete,
             login_session=login_session)
 
+
 # Add wrestler
 @app.route(
     '/factions/<int:faction_id>/wrestler/new/', methods=['GET', 'POST'])
@@ -298,6 +304,7 @@ def newWrestler(faction_id):
     else:
         return render_template('newwrestler.html', faction_id=faction_id,
                                login_session=login_session)
+
 
 # Edit Wrestler
 @app.route('/factions/<int:faction_id>/wrestler/<int:wrestler_id>/edit',
@@ -328,6 +335,7 @@ def editWrestler(faction_id, wrestler_id):
             wrestler_id=wrestler_id, wrestler=editedWrestler,
             login_session=login_session)
 
+
 # Delete Wrestler
 @app.route('/factions/<int:faction_id>/wrestler/<int:wrestler_id>/delete',
            methods=['GET', 'POST'])
@@ -347,6 +355,7 @@ def deleteWrestler(faction_id, wrestler_id):
     else:
         return render_template('deleteWrestler.html',
                                wrestler=deletedWrestler)
+
 
 # Return JSONS of wrestler and faction data
 @app.route('/factions/JSON')
