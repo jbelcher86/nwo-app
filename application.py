@@ -302,7 +302,7 @@ def newWrestler(faction_id):
         session.commit()
         return redirect(url_for('showFactionDetail', faction_id=faction_id))
     else:
-        return render_template('newwrestler.html', faction_id=faction_id,
+        return render_template('newWrestler.html', faction_id=faction_id,
                                login_session=login_session)
 
 
